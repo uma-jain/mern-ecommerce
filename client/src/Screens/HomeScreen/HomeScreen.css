@@ -1,0 +1,60 @@
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 1fr 5rem;
+  height: 100%;
+}
+header {
+  grid-area: header;
+  background-color: #203040;
+}
+main {
+  grid-area: main;
+  padding: 1rem;
+  min-height: 81vh;
+}
+
+footer {
+   background-color: #203040;
+  color: #ffffff;    
+  width:100%;
+  height:60px;   /* Height of the footer */
+}
+/* filter */
+
+.filter{
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem auto;
+    max-width: 45rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filter input,
+  .filter button,
+  .filter select{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border:.1rem #c0c0c0 solid;
+    font-size: 1.6rem;
+  
+  }
+  .categories{
+  
+    padding: 0;
+    list-style-type: none;
+  }
+  .categories a{
+    display: flex;
+    padding: 1rem;
+  }
+  
+  .categories a:hover{
+    background-color: #c0c0c0;
+  }
+  

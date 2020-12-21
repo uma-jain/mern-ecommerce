@@ -1,0 +1,10 @@
+/* Header */
+header a {
+    color: #ffffff;
+    padding: 2rem;
+  }
+  a.brand {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+  }

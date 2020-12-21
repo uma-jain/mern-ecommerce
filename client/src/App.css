@@ -1,0 +1,53 @@
+html {
+  font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-size: 1.6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  margin:0;
+  padding:0;
+  height:100vh;
+
+}
+
+/* Layout */
+
+/* Common */
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: #ff8000;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.row.center {
+  justify-content: center;
+}
+
+/* admin */
+.dropdown{
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content{
+  position: absolute;
+  display: none;
+  right:0;
+  padding: 1rem;
+  list-style-type: none;
+  z-index: 1;
+  background-color: #203040;
+  margin:0;
+  margin-top:0.4rem;
+}
+.dropdown:hover .dropdown-content{
+  display: block;
+}
