@@ -3,7 +3,7 @@ import "./App.css"
 
 import Cookie from 'js-cookie';
 import {connect  } from "react-redux";
-import { BrowserRouter, Route,Link,withRouter,useHistory} from 'react-router-dom';
+import { BrowserRouter, Route,Link,withRouter,useHistory,Switch} from 'react-router-dom';
 
 import Navbar from "./components/Navbar/Navbar"
 
@@ -38,6 +38,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { loadUser,logout} from "./redux/actionCreator/UserActions";
 
+const  NotFound=()=>{
+  return(
+    <div>
+      Page Not Found
+    </div>
+  )
+}
 const drawerWidth = 240;
 //cookies
 const useStyles = makeStyles((theme) => ({
@@ -158,25 +165,25 @@ function App(props) {
         <main  className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}>
-
+           <Switch>
           <Route path="/cart/:id/:qty" component={withRouter(CartScreen)}></Route>          
           <Route exact path="/cart" component={withRouter(CartScreen)}></Route>
           <Route path="/product/:id" component={withRouter(ProductScreen)}></Route>
           <Route path="/category/:id" component={HomeScreen} />
           <Route exact path="/" component={withRouter(HomeScreen)} ></Route>
-          <ProtectedRoute exact path="/signup" component={withRouter(RegisterScreen)} ></ProtectedRoute>
-          <ProtectedRoute path="/signin" component={withRouter(SignInScreen)} />
-          <Route path="/shipping" component={withRouter(ShippingAddressScreen)}></Route>
+          <ProtectedRoute  path="/signup" component={withRouter(RegisterScreen)} ></ProtectedRoute>
+          <ProtectedRoute path="/signin" component={withRouter(SignInScreen)}  />
+          <Route path="/shipping" shipping={true} component={withRouter(ShippingAddressScreen)}></Route>
           <Route exact path="/payment" component={withRouter(PaymentMethodScreen)} ></Route>
           <Route exact path="/placeorder" component={withRouter(PlaceOrderScreen)} ></Route>          
           <Route exact path="/order/:id" component={withRouter(OrderScreen)} ></Route>               
           <Route exact path="/profile" component={withRouter(ProfileScreen)} ></Route>
-          <Route exact path="/admin/orders" component={withRouter(OrdersScreen)} ></Route>
-          
+          <Route exact path="/admin/orders" component={withRouter(OrdersScreen)} ></Route>          
           <Route exact path="/verifyEmail" component={withRouter(VerifyEmailScreen)} ></Route>
           <Route exact path="/admin/products" component={withRouter(ProductsScreen)} ></Route>          
           <Route exact path="/resetPassword" component={withRouter(ResetPasswordScreen)} ></Route>
-          
+          <Route  path='*' component={withRouter(NotFound)} ></Route>
+          </Switch>
                 </main>
 
         <footer className="row center">All right reserved</footer>

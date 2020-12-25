@@ -8,6 +8,7 @@ import MessageBox from "../../../components/ErrorBox/ErrorBox"
 import { storage } from "../../../firebase/firebase"
 
 
+
 import { saveProduct,getAllProducts,deleteProdcut } from "../../../redux/actionCreator/ProductActions";
 
 function ProductsScreen(props) {
@@ -111,7 +112,7 @@ function ProductsScreen(props) {
   props.deleteProdcut(product._id);
   setModalVisible(false)
   }
-  return  props.user.userInfo && !props.user.userInfo.isAdmin ? <div> you are not allowed to access this page</div> : <div className="content content-margined">
+  return  !props.user.loading && props.user.userInfo && !props.user.userInfo.isAdmin ? <div> you are not allowed to access this page</div> : <div className="content content-margined">
   {loadingSave || loadingDelete  && <Loading></Loading>}
     {product_fetching_error && <MessageBox msg={props.product_fetching_error} type="1"></MessageBox>}
     {errorSave && <MessageBox msg={props.errorSave} type="1"></MessageBox>}
@@ -206,9 +207,10 @@ function ProductsScreen(props) {
 
 
     <div className="product-list">
-
+    {loading&& <Loading></Loading>}
+      {  !loading && products && !products[0] && <div>No Products</div> }
       <table className="table">
-        <thead>
+      { !loading&& products && products[0]&& <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
@@ -217,9 +219,9 @@ function ProductsScreen(props) {
             <th>Brand</th>
             <th>Action</th>
           </tr>
-        </thead>
+        </thead>}
         <tbody>
-          { products && products.map(product => (<tr key={product._id}>
+          { !loading&& products && products.map(product => (<tr key={product._id}>
             <td>{product._id}</td>
             <td>{product.name}</td>
             <td>{product.price}</td>

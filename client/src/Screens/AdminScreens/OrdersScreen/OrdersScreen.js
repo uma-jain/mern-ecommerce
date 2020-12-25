@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { saveOrder, listOrders, deleteOrder } from '../../../redux/actionCreator/OrderActions';
 import "./OrderScreen.css"
+import Loading from "../../../components/Loading/LoadingBox";
 
 
 
@@ -34,16 +35,18 @@ function OrdersScreen(props) {
   const deleteHandler = (order) => {
     props.deleteOrder(order._id);
   }
-  return loading ? <div>Loading...</div> : props.user.userInfo && !props.user.userInfo.isAdmin ? <div> you are not allowed to access this page</div>: 
+  return !loading && props.user.userInfo && !props.user.userInfo.isAdmin ? <div> you are not allowed to access this page</div>: 
     <div className="content content-margined">
-
+     
       <div className="order-header">
         <h3>Orders</h3>
       </div>
+      { loading && <div><Loading></Loading></div> }
       <div className="order-list">
 
         <table className="table">
-          <thead>
+        {orders && !orders[0] && <div>NO ORDERS YET</div>}
+          {orders && orders[0] && <thead>
             <tr>
               <th>ID</th>
               <th>DATE</th>
@@ -55,7 +58,7 @@ function OrdersScreen(props) {
               <th>DELIVERED AT</th>
               <th>ACTIONS</th>
             </tr>
-          </thead>
+          </thead>}
           <tbody>
             { orders && orders.map(order => (<tr key={order._id}>
               <td>{order._id}</td>

@@ -55,7 +55,7 @@ const submitHandler = (e) => {
     {productLoading && <Loading></Loading>}
     {reviewLoading && <Loading></Loading>}
     {product_fetching_error && <MessageBox msg={props.error} type="1"></MessageBox>}
-    {!productLoading &&
+    {!productLoading && 
     <div>
      <div className="back-to-result">
         <Link to="/">Back to result</Link>
@@ -122,7 +122,9 @@ const submitHandler = (e) => {
       </div>
       <div className="content-margined">
             <h2>Reviews</h2>
-            {!product && !product.reviews &&!product.reviews.length && <div>There is no review</div>}
+            {product && product.reviews &&!product.reviews[0] && <div>There is no review</div>}
+            {reviewLoading&& <Loading></Loading>}
+            
             <ul className="review" id="reviews">
         
               {product && product.reviews && product.reviews.map((review) => (
@@ -137,11 +139,9 @@ const submitHandler = (e) => {
                 </li>
                 
               ))}
+           
               
-              {product && product.reviews && product.reviews.map((review) => (
-                
-                console.log(review.rating) 
-              ))}
+             
               <li>
                 <h3>Write a customer review</h3>
                 {userInfo ? (

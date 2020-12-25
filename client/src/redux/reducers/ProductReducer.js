@@ -17,7 +17,8 @@ switch(action.type){
  case GET_ALL_PRODUCTS:
      return{
         ...state,
-        loading:true    
+        loading:true ,   
+        Allproducts:[]
      }
      
  case GET_ALL_PRODUCTS_SUCCESS:
@@ -69,7 +70,7 @@ export const productDetailsReducer = (state = { product: {}, loading: true,error
       case PRODUCT_DELETE_REQUEST:
         return { ...state,loading: true };
       case PRODUCT_DELETE_SUCCESS:
-        return {...state, loading: false, product: action.payload, success: true };
+        return {...state, loading: false, product: action.payload, success: true,error:null };
       case PRODUCT_DELETE_FAIL:
         return { ...state,loading: false, error: action.payload ,success: false }
       default:
@@ -77,14 +78,14 @@ export const productDetailsReducer = (state = { product: {}, loading: true,error
     }
   }
   
-  export function productReviewSaveReducer(state = {loading:false,review:{},success:false}, action) {
+  export function productReviewSaveReducer(state = {loading:false,review:{},success:false,error:null}, action) {
     switch (action.type) {
       case PRODUCT_REVIEW_SAVE_REQUEST:
-        return { loading: true };
+        return { ...state,loading: true,error:null };
       case PRODUCT_REVIEW_SAVE_SUCCESS:
-        return { loading: false, review: action.payload, success: true };
+        return { ...state,loading: false, review: action.payload, success: true ,error:null};
       case PRODUCT_REVIEW_SAVE_FAIL:
-        return { loading: false, errror: action.payload };
+        return {...state, loading: false, error: action.payload };
       case PRODUCT_REVIEW_SAVE_RESET:
         return {};
       default:

@@ -99,7 +99,7 @@ function Navbar(props) {
             <div style={{marginTop:"15px"}}>
 
             <Link to="/cart">
-                    <Badge badgeContent={4} color="primary">
+                    <Badge badgeContent={props.cartItems.length || 0} color="primary">
                 <ShoppingCartIcon style={{fontSize:30}}/>
             </Badge>
             </Link>
@@ -138,11 +138,12 @@ function Navbar(props) {
     )
 }
 
-const mapStateToProps=({user})=>{
+const mapStateToProps=({user,cart})=>{
     return {
         loading:user.loading,
         userInfo:user.userInfo,
-        error:user.userError_signin
+        error:user.userError_signin,
+        cartItems:cart.cartItems
     }
   }
   

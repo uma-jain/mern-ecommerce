@@ -16,7 +16,7 @@ function userReducer(state = initialState, action) {
    case LOAD_USER:
         return { ...state,loading: false, userInfo: action.payload || null };
     case USER_SIGNIN_FAIL:
-      return { ...state,loading: false, userError_signin: action.payload };
+      return { ...state,loading: false, userError_signin: action.payload,userError_signin : null};
     case USER_REGISTER_REQUEST:
         return { ...state,loading: true };
       case USER_REGISTER_SUCCESS:

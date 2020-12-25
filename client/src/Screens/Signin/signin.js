@@ -12,8 +12,10 @@ function SigninScreen(props) {
   });    
 
   const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
+  //alert(redirect)
   useEffect(() => {
-    if (userInfo && !loading) {        
+    if (userInfo && !loading) {   
+      console.log(redirect);     
       props.history.push(redirect);
       
     }    
@@ -22,7 +24,7 @@ function SigninScreen(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     props.signin(data.email,data.password);       
-   // props.history.push("/");
+    props.history.push(redirect);
   }
   return <div className="form">
     <form onSubmit={submitHandler} >

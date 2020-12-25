@@ -20,7 +20,8 @@ function CartScreen(props) {
   }, []);
 
   const checkoutHandler = () => {    
-    props.history.push("/signin?redirect=shipping");
+    props.history.push("/shipping");
+    
   }
 
   return <div className="cart">
@@ -90,7 +91,7 @@ function CartScreen(props) {
 
 const mapStateToPorps=({cart})=>{
   return{
-   cartItems:cart.cartItems
+   cartItems:cart.cartItems,
   }
 }
 

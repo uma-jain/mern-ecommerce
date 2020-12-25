@@ -10,7 +10,7 @@ function ShippingAddressScreen(props) {
 
     useEffect(() => {
         if (!userInfo && !loading) {        
-         props.history.push("/signin");
+         props.history.push("/signin/success?redirect=/shipping");
         }    
       }, [userInfo]);
 
