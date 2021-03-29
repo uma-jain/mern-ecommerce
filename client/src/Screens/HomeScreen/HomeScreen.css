@@ -26,6 +26,7 @@ footer {
 }
 /* filter */
 
+
 .filter{
     display: flex;
     list-style-type: none;
@@ -35,6 +36,7 @@ footer {
     justify-content: space-between;
     align-items: center;
   }
+
   .filter input,
   .filter button,
   .filter select{
@@ -44,6 +46,7 @@ footer {
     font-size: 1.6rem;
   
   }
+
   .categories{
   
     padding: 0;
@@ -57,4 +60,31 @@ footer {
   .categories a:hover{
     background-color: #c0c0c0;
   }
+  .sortby{
+    display: inline-block;
+    margin-right: 10px;
   
+   }
+   
+  
+@media only screen and (max-width: 480px) {
+  .filter{
+    display: block;
+}
+  .filter li{
+   display: flex;
+   justify-content: center;
+   justify-items: center;
+   
+  }
+
+  .filter li:not(:last-child){
+    margin: 20px;
+  }
+  .sortby{
+    margin-right: 10px;
+   }  
+
+  
+
+}

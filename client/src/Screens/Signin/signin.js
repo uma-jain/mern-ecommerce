@@ -52,9 +52,9 @@ function SigninScreen(props) {
           <button type="submit" className="button primary" onClick={()=>{props.signin(data.email,data.password)}}>Signin</button>
         </li>
         <li>
-        <Link to="/resetPassword"> Forgot Password</Link>
+        <Link to="/resetPassword" className="last-two"> Forgot Password</Link>
         </li>
-        <li>
+        <li className="last-two">
           New to amazona?
         </li>
         <li>

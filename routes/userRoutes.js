@@ -26,8 +26,9 @@ function sendVerificationEmail(req,res,user){
                
                url="http://localhost:5000"+"/api/users"+"/confirmation/"+user.email+"/"+user.verificationToken
                console.log("sending mail to"+url);
+               console.log(process.env.G_USERNAME,process.env.G_PASSWORD);
                  var mailOptions = { 
-                   from: "umajain1000@gmail.com",
+                   from:process.env.G_USERNAME,
                     to: user.email, 
                     subject: 'Account Verification Token',                
                     text: "Hello " + req.body.name +',\n\n' + 
@@ -39,7 +40,7 @@ function sendVerificationEmail(req,res,user){
                       return res.status(500).send({ msg: err.message }); }
                      else{
                       res.status(200).send('A verification email has been sent to you at ' + user.email + '.');
-                     }                     
+                     }                 
                      
                  });
 
@@ -58,7 +59,7 @@ router.get('/confirmation/:email/:token',async(req,res)=>{
     } 
     // user is already verified
     else if (user.verified){
-        return res.status(200).send('User has been already verified. Please Login');
+        return res.status(200).send('User has been already verified. Please Login ');
     }
     // verify user
     else{
@@ -197,7 +198,7 @@ router.post('/register',[
   if (user) {
     //check if user verified or not
     if(user.verified){
-      res.status(401).json({errors:"email "+req.body.email+" already verified , Plz login"})
+      res.status(401).json({errors:"User Already Exists"})
     }   else{
       //verification remaining
       //send mail
@@ -273,7 +274,7 @@ check('password','Password cant be empty').notEmpty()
                       isAdmin: signinUser.isAdmin,
                   
                     },process.env.JWT_SECRET, {
-                      expiresIn: '48h'
+                      expiresIn: '2d'
                     })
                 })            
               } else{

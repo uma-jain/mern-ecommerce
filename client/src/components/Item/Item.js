@@ -12,11 +12,11 @@ import { PRODUCT_DETAILS_FAIL } from '../../redux/actiontypes';
   const { product } = props;
   return (
     <div key={product._id} class="card">
-      <Link to={`/product/${product._id}`}>
+      <Link to={`/product/${product._id}`} >
         <img className="medium" src={product.image} alt={product.name} />
       </Link>
       <div class="card-body">
-        <Link to={`/product/${product._id}`}>
+        <Link to={`/product/${product._id}`} color="inherit" variant="body1">
           <h2>{product.name}</h2>
         </Link>
         <div style={{lineHeight:"0px"}}>

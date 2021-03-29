@@ -20,8 +20,7 @@ function CartScreen(props) {
   }, []);
 
   const checkoutHandler = () => {    
-    props.history.push("/shipping");
-    
+    props.history.push("/shipping");    
   }
 
   return <div className="cart">
@@ -47,12 +46,13 @@ function CartScreen(props) {
                   <img src={item.image} alt="product" />
                 </div>
                 <div className="cart-name">
-                  <div>
+                  <div className="mb-15">
                     <Link to={"/product/" + item.product}>
                       {item.name}
                     </Link>
 
                   </div>
+
                   <div>
                     Qty:
                   <select value={item.qty} onChange={(e) => props.addToCart(item.product, e.target.value)}>
@@ -60,7 +60,7 @@ function CartScreen(props) {
                         <option key={x + 1} value={x + 1}>{x + 1}</option>
                       )}
                     </select>
-                    <button type="button" className="button" onClick={() => removeFromCartHandler(item.product)} >
+                    <button type="button" className="button_deletefromcart" onClick={() => removeFromCartHandler(item.product)} >
                       Delete
                     </button>
                   </div>

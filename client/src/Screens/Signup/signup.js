@@ -10,6 +10,7 @@ function RegisterScreen(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [err_empty,seterror]=useState({isSet:false,msg:"hhhhhhhhh"})
 
   useEffect(() => {
     if (userInfo && !loading) {
@@ -20,11 +21,14 @@ function RegisterScreen(props) {
     };
   }, [userInfo]);
 
-  const submitHandler = () => {
-  //  e.preventDefault();
-    console.log(props.history);
-   props.register(name, email, password, props.history);
-   props.history.push("/verifyEmail")
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if(name === '' || email === '' || password ===''){
+    seterror({isSet:true,msg:"Please Fill All Fields"})
+    setTimeout(function(){ 
+      seterror({isSet:false,msg:''}) }, 2000);
+    }else
+            props.register(name, email, password, props.history);
    // now display a msg for user to verify email by clicking link
    //alert("check mail")
    //rediect to new page which will have info about furthur procedings
@@ -38,7 +42,8 @@ function RegisterScreen(props) {
         </li>
         <li>
           {loading && <div>Loading...</div>}
-          {error && <div>{error}</div>}
+          {error && <div>{error}</div>}          
+          {err_empty.isSet && <div>{err_empty.msg}</div>}
         </li>
         <li>
           <label htmlFor="name">
@@ -61,11 +66,11 @@ function RegisterScreen(props) {
         </li>
        
         <li>
-          <button type="submit" className="button-primary" onClick={()=>{submitHandler()}}>Register</button>
+          <button type="submit" className="button-primary" onClick={(e)=>{submitHandler(e)}}>Register</button>
         </li>
         <li>
-        <Link to="/signin">   Already have an account?</Link>
-        <Link to="/resetPassword"> Forgot Password</Link>
+        <Link to="/signin" className="last-two"> Already have an account?</Link>
+        <Link to="/resetPassword" className="last-two" > Forgot Password</Link>
         </li>
 
       </ul>

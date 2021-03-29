@@ -98,6 +98,7 @@ const submitHandler = (e) => {
                     onChange={(e) => {
                       setQty(e.target.value);
                     }}
+                    className='select_qty'
                   >
                     {[...Array(product.countInStock).keys()].map((x) => (
                       <option key={x + 1} value={x + 1}>

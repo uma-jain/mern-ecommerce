@@ -47,7 +47,8 @@ import { Link } from 'react-router-dom';
       </div>
       }    
 
-   { !category && <ul className="filter">
+   { !category &&
+    <ul className="filter">
       <li>
         <form onSubmit={submitHandler}>
           <input name="searchKeyword" onChange={(e) => setSearchKeyword(e.target.value)} />
@@ -55,7 +56,7 @@ import { Link } from 'react-router-dom';
         </form>
       </li>
       <li>
-        Sort By {' '}
+       <p className="sortby"> Sort By {' '} </p>
         <select name="sortOrder" onChange={sortHandler}>
           <option value="">Newest</option>
           <option value="lowest">Lowest</option>

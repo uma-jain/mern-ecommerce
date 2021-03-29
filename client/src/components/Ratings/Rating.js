@@ -8,8 +8,8 @@ export default function Rating(props) {
   //console.log(rating);
 
   return (
-    <div className="">
-     <Box component="fieldset" mb={3} borderColor="transparent">        
+    <div >
+     <Box component="fieldset" mb={3} borderColor="transparent" style={{margin:'0',padding:0,border :"none"}}>        
      <Rate name="read-only" value={rating} readOnly /><br/>
       <span>{numReviews + ' reviews'}</span>
       </Box>

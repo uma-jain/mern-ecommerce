@@ -100,7 +100,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 function App(props) {
   let history = useHistory();
-  const userInfo=props.userInfo;
 
   useEffect(() => {
  //props.logout();

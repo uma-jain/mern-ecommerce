@@ -10,11 +10,11 @@ function ProfileScreen(props) {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
 
-
-
   const { userInfo } = props.user;
 
   const handleLogout = () => {
+    
+    alert("call logoout from profile")
     props.logout();
     props.history.push("/signin");
   }
@@ -27,31 +27,32 @@ function ProfileScreen(props) {
   const { loading: loadingOrders, orders, error: errorOrders } =props.myOrderList;
 
   useEffect(() => {
-    if (userInfo) {
+
+    if (userInfo && !userInfo.loading) {
       console.log(userInfo.name)
       setEmail(userInfo.email);
       setName(userInfo.name);
       setPassword(userInfo.password);
     }  
  props.listMyOrders();
- if(!userInfo){
+ if(!localStorage.getItem("token")){
    props.history.push("/")
  }
    
-  }, [userInfo])
+  }, [])
 
   
 
   return (<div className="profile">
     <div className="profile-info">
       <div className="form">
-        <form onSubmit={submitHandler} >
+        <form  >
           <ul className="form-container">
             <li>
               <h2>User Profile</h2>
             </li>
             <li>
-              {loading && <div>Loading...</div>}
+              {loading && <div>Updating...</div>}
               {error && <div>{error}</div>}
               {success && <div>Profile Saved Successfully.</div>}
             </li>
@@ -69,14 +70,8 @@ function ProfileScreen(props) {
               <input value={email} type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
               </input>
             </li>
-         { /*  <li>
-              <label htmlFor="password">Password</label>
-              <input value={password} type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
-              </input>
-            </li> */}
-
             <li>
-              <button type="submit" className="button primary">Update</button>
+              <button type="submit" className="button primary" onClick={(e)=>submitHandler(e)}>Update</button>
             </li>
             <li>
 
@@ -91,7 +86,7 @@ function ProfileScreen(props) {
       {
         loadingOrders ? <div>Loading...</div> :
           errorOrders ? <div>{errorOrders} </div> :
-            <table className="table">
+          orders&& orders[0] && <table className="table">
               <thead>
                 <tr>
                   <th>ID</th>

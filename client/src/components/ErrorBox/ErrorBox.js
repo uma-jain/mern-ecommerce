@@ -6,7 +6,6 @@ function Alert(props) {
   }
 
 function ErrorBox({msg,type}) {
-  alert("er")
     return (
         <div>
       {type && <Alert severity="error">{msg}</Alert> }

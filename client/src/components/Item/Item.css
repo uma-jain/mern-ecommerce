@@ -1,30 +1,56 @@
 h1 {
     font-size: 1.8rem;
     padding: 1rem 0;
+    
+    color: #000;
   }
   h2 {
     font-size: 1.6rem;
     padding: 0rem 0;
+    
+    color: #000;
+  }
+  h2:hover{
+    color: #f1b614;
   }
   img {
     border-radius: 0.5rem;
-    width: 30%;
-    height: 35%;
+   
   }
   img.medium {
-    max-width: 32rem;
-    width: 100%;
-    height: 180px;   
+   max-height: 196px;
   }
   
   /* Card */
-  .card {
-    border: 0.1rem #c0c0c0 solid;
+  .card {   
     background-color: #f8f8f8;
-    border-radius: 0.5rem;
     margin: 1rem;
-    padding: 10px;
+    padding: 10px;    
+    width:25rem;
+    height: 40rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.2s ease-out;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.15)
   }
+  .card:hover {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    animation-name: example;
+    animation-duration: 0.2s;
+    border-left: 8px solid #f0c040;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+  
+  @keyframes example {
+    0%   {border-left: 2px solid #ffffff;}
+    25%  {border-left: 3px solid #ffe6e6;}
+    50%  {border-left: 4px solid #eed592;}
+    100% {border-left: 5px solid #f3b509;}
+}
+
   .card-body {
     padding: 10px;
   }
