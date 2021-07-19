@@ -1,10 +1,31 @@
 /* Header */
 header a {
-    color: #ffffff;
-    padding: 2rem;
-  }
-  a.brand {
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: bold;
-  }
+  color: #ffffff;
+  
+}
+
+header{
+  min-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.header-links > * {
+  margin-right: 20px;
+  display: block;
+}
+a.brand {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.header-links{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: end;
+  
+  
+}

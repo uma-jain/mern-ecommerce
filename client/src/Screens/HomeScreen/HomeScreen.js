@@ -66,6 +66,7 @@ import { Link } from 'react-router-dom';
     </ul>}
     {props.loading && <Loading></Loading>}
     {props.error && <MessageBox msg={props.error} type="1"></MessageBox>}
+   
     {!props.laoding &&
      <div className="row center">
         { props.products&& props.products.map((product) => (

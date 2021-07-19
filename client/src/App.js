@@ -138,9 +138,11 @@ function App(props) {
         classes={{
           paper: classes.drawerPaper,
         }}
+        
+       
       >
        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose}  style={{color:"black",border:"none",outline:"none"}}>
           <CloseIcon></CloseIcon>
           </IconButton>
         </div>
